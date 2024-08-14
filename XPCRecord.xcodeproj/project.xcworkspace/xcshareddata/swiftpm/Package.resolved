@@ -1,0 +1,15 @@
+{
+  "originHash" : "c012723725d2761e8a56fc14d4eabc2b8423c509b5d3a1531ae899749940b350",
+  "pins" : [
+    {
+      "identity" : "securexpc",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rurza/SecureXPC",
+      "state" : {
+        "branch" : "fix-SMAppService-agent",
+        "revision" : "356d4f3305ba01c90a3eb67808893945d47e2440"
+      }
+    }
+  ],
+  "version" : 3
+}

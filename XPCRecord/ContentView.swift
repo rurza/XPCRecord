@@ -37,6 +37,10 @@ struct ContentView: View {
             .padding()
             .opacity(model.isRecording ? 0.3 : 1)
             .animation(.linear(duration: 1).repeatForever(), value: model.isRecording)
+            if let text = model.text {
+                Text(text)
+                    .font(.headline)
+            }
         }
         .padding()
     }

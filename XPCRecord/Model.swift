@@ -15,57 +15,62 @@ final class Model: ObservableObject {
     var isRecording: Bool = false
 
     @Published
+    var text: String?
+
+    lazy var recorder = Recorder()
+
+    @Published
     var serviceRegistered: Bool = false
     private lazy var logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "Model")
 
     init() {
-        registerService()
-    }
-
-    private func registerService() {
-        do {
-            logger.debug("Register service")
-            let service = SMAppService.agent(plistName: agentIdentifier + ".plist")
-            try service.register()
-            if service.status == .enabled {
-                serviceRegistered = true
-            }
-            logger.debug("Service registered")
-        } catch {
-            logger.error("Failed to register service: \(error)")
-        }
+        serviceRegistered = service.status == .enabled
     }
 
     func userDidTapRecordingButton() {
-        Task {
-            do {
-                logger.debug("Start recording")
-                let client = XPCClient.forMachService(named: agentIdentifier)
-                let sequence = client.send(to: startRecordingRoute)
-                isRecording = true
-                for try await text in sequence {
-                    
+        Task { @MainActor in
+            let client = XPCClient.forMachService(named: agentIdentifier)
+            if !isRecording {
+                do {
+                    logger.debug("Start recording")
+                    let sequence = client.send(to: startRecordingRoute)
+                    isRecording = true
+                    for try await text in sequence {
+                        self.text = text
+                    }
+                    logger.debug("Recording started")
+                } catch {
+                    logger.error("Failed to start recording: \(error)")
                 }
-                logger.debug("Recording started")
-            } catch {
-                logger.error("Failed to start recording: \(error)")
+            } else {
+                try await client.send(to: stopRecordingRoute)
+                isRecording = false
+                text = nil
             }
         }
     }
 
     func toggleAgent() {
-        let service = SMAppService.agent(plistName: agentIdentifier + ".plist")
-        switch service.status {
-        case .enabled:
-            try? service.unregister()
-            serviceRegistered = false
-        case .notRegistered:
-            try? service.register()
-            serviceRegistered = true
-        case .requiresApproval, .notFound:
-            fatalError()
-        @unknown default:
-            fatalError()
+        do {
+            switch service.status {
+            case .enabled:
+                try service.unregister()
+                serviceRegistered = false
+            case .notRegistered, .notFound:
+                try service.register()
+                serviceRegistered = true
+            case .requiresApproval:
+                logger.debug("Required approval.")
+            @unknown default:
+                fatalError()
+            }
+        } catch {
+            logger.error("Failed to toggle agent: \(error)")
         }
+    }
+
+    var service: SMAppService {
+        SMAppService.agent(plistName: agentIdentifier + ".plist")
+        //loginItem(identifier: uiAgentIdentifier)
     }
 }

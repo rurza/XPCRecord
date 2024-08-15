@@ -9,6 +9,7 @@ import Foundation
 import SecureXPC
 
 let agentIdentifier = "software.micropixels.XPCRecordAgent"
+let uiAgentIdentifier = "software.micropixels.XPCRecordUIAgent"
 
 let startRecordingRoute = XPCRoute.named("startRecording")
     .withSequentialReplyType(String.self)
@@ -19,4 +20,6 @@ let stopRecordingRoute = XPCRoute.named("stopRecording")
 enum RecorderError: String, Error, Codable {
     case noAuthorization
     case recognizerFailure
+    case notAvailable
+    case audioEngineFailure
 }

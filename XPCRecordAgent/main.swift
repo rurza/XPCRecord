@@ -16,7 +16,7 @@ func main() throws {
     let recorder = Recorder()
     server.registerRoute(startRecordingRoute) { provider in
         let stream = try await recorder.startRecording()
-        for await result in stream {
+        for try await result in stream {
             try await provider.success(value: result)
         }
     }

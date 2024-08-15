@@ -10,6 +10,7 @@
 		66924E592C6C8BA100088B66 /* XPCRecordAgent in Agent Bin */ = {isa = PBXBuildFile; fileRef = 66924E412C6C8A7E00088B66 /* XPCRecordAgent */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		66FA36712C6CB04700ED2B75 /* SecureXPC in Frameworks */ = {isa = PBXBuildFile; productRef = 66FA36702C6CB04700ED2B75 /* SecureXPC */; };
 		66FA36732C6CB05300ED2B75 /* SecureXPC in Frameworks */ = {isa = PBXBuildFile; productRef = 66FA36722C6CB05300ED2B75 /* SecureXPC */; };
+		66FA36C32C6CFE3800ED2B75 /* SecureXPC in Frameworks */ = {isa = PBXBuildFile; productRef = 66FA36C22C6CFE3800ED2B75 /* SecureXPC */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		66924E262C6C89C100088B66 /* XPCRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XPCRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66924E412C6C8A7E00088B66 /* XPCRecordAgent */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = XPCRecordAgent; sourceTree = BUILT_PRODUCTS_DIR; };
+		66FA36AE2C6CFD9100ED2B75 /* XPCRecordUIAgent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XPCRecordUIAgent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -55,6 +57,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				IPC.swift,
+				Recorder.swift,
 			);
 			target = 66924E252C6C89C100088B66 /* XPCRecord */;
 		};
@@ -62,6 +65,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				IPC.swift,
+				Recorder.swift,
 			);
 			target = 66924E402C6C8A7E00088B66 /* XPCRecordAgent */;
 		};
@@ -72,6 +76,21 @@
 			);
 			target = 66924E252C6C89C100088B66 /* XPCRecord */;
 		};
+		66FA36B82C6CFD9200ED2B75 /* Exceptions for "XPCRecordUIAgent" folder in "XPCRecordUIAgent" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"/Localized: MainMenu.xib",
+			);
+			target = 66FA36AD2C6CFD9100ED2B75 /* XPCRecordUIAgent */;
+		};
+		66FA36C02C6CFE1200ED2B75 /* Exceptions for "Shared" folder in "XPCRecordUIAgent" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				IPC.swift,
+				Recorder.swift,
+			);
+			target = 66FA36AD2C6CFD9100ED2B75 /* XPCRecordUIAgent */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
@@ -80,6 +99,13 @@
 			buildPhase = 66924E542C6C8B6600088B66 /* Agent Plist */;
 			membershipExceptions = (
 				software.micropixels.XPCRecordAgent.plist,
+			);
+		};
+		66FA36BC2C6CFD9200ED2B75 /* Exceptions for "XPCRecordUIAgent" folder in "Copy Bundle Resources" phase from "XPCRecordUIAgent" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 66FA36AC2C6CFD9100ED2B75 /* Resources */;
+			membershipExceptions = (
+				Base.lproj/MainMenu.xib,
 			);
 		};
 /* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
@@ -104,8 +130,18 @@
 			exceptions = (
 				66924E4F2C6C8AC200088B66 /* Exceptions for "Shared" folder in "XPCRecord" target */,
 				66924E512C6C8ADF00088B66 /* Exceptions for "Shared" folder in "XPCRecordAgent" target */,
+				66FA36C02C6CFE1200ED2B75 /* Exceptions for "Shared" folder in "XPCRecordUIAgent" target */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		66FA36AF2C6CFD9100ED2B75 /* XPCRecordUIAgent */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				66FA36B82C6CFD9200ED2B75 /* Exceptions for "XPCRecordUIAgent" folder in "XPCRecordUIAgent" target */,
+				66FA36BC2C6CFD9200ED2B75 /* Exceptions for "XPCRecordUIAgent" folder in "Copy Bundle Resources" phase from "XPCRecordUIAgent" target */,
+			);
+			path = XPCRecordUIAgent;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -127,6 +163,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		66FA36AB2C6CFD9100ED2B75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66FA36C32C6CFE3800ED2B75 /* SecureXPC in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -136,6 +180,7 @@
 				66924E4B2C6C8AB600088B66 /* Shared */,
 				66924E282C6C89C100088B66 /* XPCRecord */,
 				66924E422C6C8A7E00088B66 /* XPCRecordAgent */,
+				66FA36AF2C6CFD9100ED2B75 /* XPCRecordUIAgent */,
 				66924E482C6C8A8800088B66 /* Frameworks */,
 				66924E272C6C89C100088B66 /* Products */,
 			);
@@ -146,6 +191,7 @@
 			children = (
 				66924E262C6C89C100088B66 /* XPCRecord.app */,
 				66924E412C6C8A7E00088B66 /* XPCRecordAgent */,
+				66FA36AE2C6CFD9100ED2B75 /* XPCRecordUIAgent.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -208,6 +254,29 @@
 			productReference = 66924E412C6C8A7E00088B66 /* XPCRecordAgent */;
 			productType = "com.apple.product-type.tool";
 		};
+		66FA36AD2C6CFD9100ED2B75 /* XPCRecordUIAgent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66FA36B92C6CFD9200ED2B75 /* Build configuration list for PBXNativeTarget "XPCRecordUIAgent" */;
+			buildPhases = (
+				66FA36AA2C6CFD9100ED2B75 /* Sources */,
+				66FA36AB2C6CFD9100ED2B75 /* Frameworks */,
+				66FA36AC2C6CFD9100ED2B75 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				66FA36AF2C6CFD9100ED2B75 /* XPCRecordUIAgent */,
+			);
+			name = XPCRecordUIAgent;
+			packageProductDependencies = (
+				66FA36C22C6CFE3800ED2B75 /* SecureXPC */,
+			);
+			productName = XPCRecordUIAgent;
+			productReference = 66FA36AE2C6CFD9100ED2B75 /* XPCRecordUIAgent.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -222,6 +291,9 @@
 						CreatedOnToolsVersion = 16.0;
 					};
 					66924E402C6C8A7E00088B66 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					66FA36AD2C6CFD9100ED2B75 = {
 						CreatedOnToolsVersion = 16.0;
 					};
 				};
@@ -245,12 +317,20 @@
 			targets = (
 				66924E252C6C89C100088B66 /* XPCRecord */,
 				66924E402C6C8A7E00088B66 /* XPCRecordAgent */,
+				66FA36AD2C6CFD9100ED2B75 /* XPCRecordUIAgent */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		66924E242C6C89C100088B66 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66FA36AC2C6CFD9100ED2B75 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -268,6 +348,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		66924E3D2C6C8A7E00088B66 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66FA36AA2C6CFD9100ED2B75 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -410,6 +497,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "What?";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Huh?";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -438,6 +527,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "What?";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Huh?";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -483,6 +574,68 @@
 			};
 			name = Release;
 		};
+		66FA36BA2C6CFD9200ED2B75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = XPCRecordUIAgent/XPCRecordUIAgent.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YL78V8PY6H;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Needed to work";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Needed to work";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = software.micropixels.XPCRecordUIAgent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		66FA36BB2C6CFD9200ED2B75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = XPCRecordUIAgent/XPCRecordUIAgent.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YL78V8PY6H;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Needed to work";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Needed to work";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = software.micropixels.XPCRecordUIAgent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -513,6 +666,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		66FA36B92C6CFD9200ED2B75 /* Build configuration list for PBXNativeTarget "XPCRecordUIAgent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66FA36BA2C6CFD9200ED2B75 /* Debug */,
+				66FA36BB2C6CFD9200ED2B75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -533,6 +695,11 @@
 			productName = SecureXPC;
 		};
 		66FA36722C6CB05300ED2B75 /* SecureXPC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66FA366F2C6CB04700ED2B75 /* XCRemoteSwiftPackageReference "SecureXPC" */;
+			productName = SecureXPC;
+		};
+		66FA36C22C6CFE3800ED2B75 /* SecureXPC */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 66FA366F2C6CB04700ED2B75 /* XCRemoteSwiftPackageReference "SecureXPC" */;
 			productName = SecureXPC;
